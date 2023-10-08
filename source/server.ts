@@ -1,5 +1,6 @@
 import http from 'http';
 import express, { Express } from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import routes from './routes/posts';
 
@@ -7,6 +8,7 @@ const router: Express = express();
 
 router.use(morgan('dev'));
 router.use(express.urlencoded({ extended: false }));
+router.use(cors());
 router.use(express.json());
 
 router.use((req, res, next) => {
