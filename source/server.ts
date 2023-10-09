@@ -2,7 +2,7 @@ import http from 'http';
 import express, { Express } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import routes from './routes/posts';
+import routes from './routes/router';
 
 const router: Express = express();
 
@@ -23,7 +23,7 @@ router.use((req, res, next) => {
 
 router.use('/', routes);
 
-router.use((req, res, next) => {
+router.use((req, res) => {
     const error = new Error('not found');
     return res.status(404).json({
         message: error.message
